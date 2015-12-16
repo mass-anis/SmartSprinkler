@@ -1849,7 +1849,7 @@ SysCtlDelay(unsigned long ulCount)
           "    bx      lr");
 }
 #endif
-#if defined(codered) || defined(gcc) || defined(sourcerygxx)
+#if defined(codered) || defined(__GNUC__) || defined(sourcerygxx)
 void __attribute__((naked))
 SysCtlDelay(unsigned long ulCount)
 {

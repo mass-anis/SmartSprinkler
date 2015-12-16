@@ -48,38 +48,38 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_FLASH += \
-blinky.hex \
+SmartSprinkler.hex \
 
 SECONDARY_SIZE += \
-blinky.siz \
+SmartSprinkler.siz \
 
 
 # All Target
-all: blinky.elf secondary-outputs
+all: SmartSprinkler.elf secondary-outputs
 
 # Tool invocations
-blinky.elf: $(OBJS) $(USER_OBJS)
+SmartSprinkler.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wpadded -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"blinky.map" --specs=nano.specs -o "blinky.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wpadded -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -T "/home/anis/Documents/Projects/workspace/SmartSprinkler/ldscripts/mem.ld" -T "/home/anis/Documents/Projects/workspace/SmartSprinkler/ldscripts/sections.ld" -T "/home/anis/Documents/Projects/workspace/SmartSprinkler/ldscripts/libs.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"SmartSprinkler.map" --specs=nano.specs -o "SmartSprinkler.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-blinky.hex: blinky.elf
+SmartSprinkler.hex: SmartSprinkler.elf
 	@echo 'Invoking: Cross ARM GNU Create Flash Image'
-	arm-none-eabi-objcopy -O ihex "blinky.elf"  "blinky.hex"
+	arm-none-eabi-objcopy -O ihex "SmartSprinkler.elf"  "SmartSprinkler.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-blinky.siz: blinky.elf
+SmartSprinkler.siz: SmartSprinkler.elf
 	@echo 'Invoking: Cross ARM GNU Print Size'
-	arm-none-eabi-size --format=berkeley "blinky.elf"
+	arm-none-eabi-size --format=berkeley "SmartSprinkler.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(SECONDARY_FLASH)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) blinky.elf
+	-$(RM) $(SECONDARY_SIZE)$(C++_DEPS)$(OBJS)$(C_DEPS)$(ASM_DEPS)$(CC_DEPS)$(SECONDARY_FLASH)$(CPP_DEPS)$(CXX_DEPS)$(C_UPPER_DEPS)$(S_UPPER_DEPS) SmartSprinkler.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)

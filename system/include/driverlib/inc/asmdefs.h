@@ -114,7 +114,7 @@
 // The defines required for GCC.
 //
 //*****************************************************************************
-#if defined(gcc)
+#if defined(__GNUC__)
 
 //
 // The assembly code preamble required to put the assembler into the correct
