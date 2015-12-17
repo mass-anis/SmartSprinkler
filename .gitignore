@@ -3,6 +3,8 @@
 .gradle
 bin/
 tmp/
+*.elf
+*.hex
 *.o
 *.d
 *.tmp
