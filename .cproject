@@ -67,9 +67,6 @@
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/include"/>
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/system/include"/>
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/system/include/cmsis"/>
-									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/system/include/LM3S8962"/>
-									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/FreeRTOS"/>
-									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/FreeRTOS/Source/include"/>
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/FreeRTOS/Source/portable/GCC/ARM_CM3"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1581242019" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
@@ -105,8 +102,6 @@
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/system/include"/>
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/system/include/cmsis"/>
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/system/include/LM3S8962"/>
-									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/FreeRTOS"/>
-									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/FreeRTOS/Source/include"/>
 									<listOptionValue builtIn="false" value="/home/anis/Documents/Projects/workspace/SmartSprinkler/FreeRTOS/Source/portable/GCC/ARM_CM3"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.noexceptions.1136359967" name="Do not use exceptions (-fno-exceptions)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.noexceptions" useByScannerDiscovery="true" value="true" valueType="boolean"/>
@@ -366,6 +361,13 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/SmartSprinkler"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/SmartSprinkler"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
