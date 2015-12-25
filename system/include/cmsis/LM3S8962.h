@@ -158,7 +158,7 @@ typedef struct {                                    /*!< WATCHDOG0 Structure    
   __IO uint32_t  TEST;                              /*!< Watchdog Test                                                         */
   __I  uint32_t  RESERVED1[505];
   __IO uint32_t  LOCK;                              /*!< Watchdog Lock                                                         */
-} WATCHDOG0_Type;
+} WATCHDOG_Type;
 
 
 /* ================================================================================ */
@@ -193,7 +193,7 @@ typedef struct {                                    /*!< GPIOA Structure        
   __IO uint32_t  DEN;                               /*!< GPIO Digital Enable                                                   */
   __IO uint32_t  LOCK;                              /*!< GPIO Lock                                                             */
   __I  uint32_t  CR;                                /*!< GPIO Commit                                                           */
-} GPIOA_Type;
+} GPIO_Type;
 
 
 /* ================================================================================ */
@@ -215,7 +215,7 @@ typedef struct {                                    /*!< SSI0 Structure         
   __IO uint32_t  RIS;                               /*!< SSI Raw Interrupt Status                                              */
   __IO uint32_t  MIS;                               /*!< SSI Masked Interrupt Status                                           */
   __O  uint32_t  ICR;                               /*!< SSI Interrupt Clear                                                   */
-} SSI0_Type;
+} SSI_Type;
 
 
 /* ================================================================================ */
@@ -247,7 +247,7 @@ typedef struct {                                    /*!< UART0 Structure        
   __IO uint32_t  RIS;                               /*!< UART Raw Interrupt Status                                             */
   __IO uint32_t  MIS;                               /*!< UART Masked Interrupt Status                                          */
   __O  uint32_t  ICR;                               /*!< UART Interrupt Clear                                                  */
-} UART0_Type;
+} UART_Type;
 
 
 /* ================================================================================ */
@@ -285,7 +285,7 @@ typedef struct {                                    /*!< I2C0 Structure         
   __IO uint32_t  SRIS;                              /*!< I2C Slave Raw Interrupt Status                                        */
   __IO uint32_t  SMIS;                              /*!< I2C Slave Masked Interrupt Status                                     */
   __O  uint32_t  SICR;                              /*!< I2C Slave Interrupt Clear                                             */
-} I2C0_Type;
+} I2C_Type;
 
 
 /* ================================================================================ */
@@ -349,7 +349,7 @@ typedef struct {                                    /*!< PWM0 Structure         
   __IO uint32_t  _2_DBCTL;                          /*!< PWM2 Dead-Band Control                                                */
   __IO uint32_t  _2_DBRISE;                         /*!< PWM2 Dead-Band Rising-Edge Delay                                      */
   __IO uint32_t  _2_DBFALL;                         /*!< PWM2 Dead-Band Falling-Edge-Delay                                     */
-} PWM0_Type;
+} PWM_Type;
 
 
 /* ================================================================================ */
@@ -373,7 +373,7 @@ typedef struct {                                    /*!< QEI0 Structure         
   __IO uint32_t  INTEN;                             /*!< QEI Interrupt Enable                                                  */
   __IO uint32_t  RIS;                               /*!< QEI Raw Interrupt Status                                              */
   __IO uint32_t  ISC;                               /*!< QEI Interrupt Status and Clear                                        */
-} QEI0_Type;
+} QEI_Type;
 
 
 /* ================================================================================ */
@@ -405,7 +405,7 @@ typedef struct {                                    /*!< TIMER0 Structure       
   __IO uint32_t  TBPMR;                             /*!< GPTM TimerB Prescale Match                                            */
   __IO uint32_t  TAR;                               /*!< GPTM Timer A                                                          */
   __IO uint32_t  TBR;                               /*!< GPTM Timer B                                                          */
-} TIMER0_Type;
+} TIMER_Type;
 
 
 /* ================================================================================ */
@@ -453,7 +453,7 @@ typedef struct {                                    /*!< ADC0 Structure         
   __IO uint32_t  SSFSTAT3;                          /*!< ADC Sample Sequence FIFO 3 Status                                     */
   __I  uint32_t  RESERVED7[20];
   __IO uint32_t  TMLB;                              /*!< ADC Test Mode Loopback                                                */
-} ADC0_Type;
+} ADC_Type;
 
 
 /* ================================================================================ */
@@ -538,7 +538,7 @@ typedef struct {                                    /*!< CAN0 Structure         
   __I  uint32_t  RESERVED5[6];
   __IO uint32_t  MSG1VAL;                           /*!< CAN Message 1 Valid                                                   */
   __IO uint32_t  MSG2VAL;                           /*!< CAN Message 2 Valid                                                   */
-} CAN0_Type;
+} CAN_Type;
 
 
 /* ================================================================================ */
@@ -744,28 +744,28 @@ typedef struct {                                    /*!< SYSCTL Structure       
 /* ================             Peripheral declaration             ================ */
 /* ================================================================================ */
 
-#define WATCHDOG0                       ((WATCHDOG0_Type          *) WATCHDOG0_BASE)
-#define GPIOA                           ((GPIOA_Type              *) GPIOA_BASE)
-#define GPIOB                           ((GPIOA_Type              *) GPIOB_BASE)
-#define GPIOC                           ((GPIOA_Type              *) GPIOC_BASE)
-#define GPIOD                           ((GPIOA_Type              *) GPIOD_BASE)
-#define SSI0                            ((SSI0_Type               *) SSI0_BASE)
-#define UART0                           ((UART0_Type              *) UART0_BASE)
-#define UART1                           ((UART0_Type              *) UART1_BASE)
-#define I2C0                            ((I2C0_Type               *) I2C0_BASE)
+#define WATCHDOG0                       ((WATCHDOG_Type          *) WATCHDOG0_BASE)
+#define GPIOA                           ((GPIO_Type              *) GPIOA_BASE)
+#define GPIOB                           ((GPIO_Type              *) GPIOB_BASE)
+#define GPIOC                           ((GPIO_Type              *) GPIOC_BASE)
+#define GPIOD                           ((GPIO_Type              *) GPIOD_BASE)
+#define SSI0                            ((SSI_Type               *) SSI0_BASE)
+#define UART0                           ((UART_Type              *) UART0_BASE)
+#define UART1                           ((UART_Type              *) UART1_BASE)
+#define I2C0                            ((I2C_Type               *) I2C0_BASE)
 #define GPIOE                           ((GPIOA_Type              *) GPIOE_BASE)
 #define GPIOF                           ((GPIOA_Type              *) GPIOF_BASE)
 #define GPIOG                           ((GPIOA_Type              *) GPIOG_BASE)
-#define PWM0                            ((PWM0_Type               *) PWM0_BASE)
-#define QEI0                            ((QEI0_Type               *) QEI0_BASE)
-#define QEI1                            ((QEI0_Type               *) QEI1_BASE)
-#define TIMER0                          ((TIMER0_Type             *) TIMER0_BASE)
-#define TIMER1                          ((TIMER0_Type             *) TIMER1_BASE)
-#define TIMER2                          ((TIMER0_Type             *) TIMER2_BASE)
-#define TIMER3                          ((TIMER0_Type             *) TIMER3_BASE)
-#define ADC0                            ((ADC0_Type               *) ADC0_BASE)
+#define PWM0                            ((PWM_Type               *) PWM0_BASE)
+#define QEI0                            ((QEI_Type               *) QEI0_BASE)
+#define QEI1                            ((QEI_Type               *) QEI1_BASE)
+#define TIMER0                          ((TIMER_Type             *) TIMER0_BASE)
+#define TIMER1                          ((TIMER_Type             *) TIMER1_BASE)
+#define TIMER2                          ((TIMER_Type             *) TIMER2_BASE)
+#define TIMER3                          ((TIMER_Type             *) TIMER3_BASE)
+#define ADC0                            ((ADC_Type               *) ADC0_BASE)
 #define COMP                            ((COMP_Type               *) COMP_BASE)
-#define CAN0                            ((CAN0_Type               *) CAN0_BASE)
+#define CAN0                            ((CAN_Type               *) CAN0_BASE)
 #define MAC                             ((MAC_Type                *) MAC_BASE)
 #define HIB                             ((HIB_Type                *) HIB_BASE)
 #define FLASH_CTRL                      ((FLASH_CTRL_Type         *) FLASH_CTRL_BASE)

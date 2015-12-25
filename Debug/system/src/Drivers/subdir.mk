@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../system/src/Drivers/ESP8266.cpp \
 ../system/src/Drivers/Usart.cpp 
 
 OBJS += \
+./system/src/Drivers/ESP8266.o \
 ./system/src/Drivers/Usart.o 
 
 CPP_DEPS += \
+./system/src/Drivers/ESP8266.d \
 ./system/src/Drivers/Usart.d 
 
 

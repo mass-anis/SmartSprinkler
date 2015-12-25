@@ -192,12 +192,12 @@
  * \class Usart
  * \brief a c++ wrapper for the Stellaris Peripheral Driver uart Library
  */
-class Usart
+class usart_t
 {
-	UART0_Type *Regs;
+	UART_Type *Regs;
 public:
-	Usart(UART0_Type * reg);
-	~Usart();
+	usart_t(UART_Type * regs);
+	~usart_t();
 	//*****************************************************************************
 	//
 	//! Sets the type of parity.

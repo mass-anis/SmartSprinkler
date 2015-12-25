@@ -70,17 +70,17 @@ static long IntNumberGet(unsigned long ulBase)
                                   (CLASS_IS_DUSTDEVIL && REVISION_IS_A0)) ?   \
                                  16 : 8)
 
-Usart::Usart(UART0_Type * reg) :
-		Regs(reg)
+usart_t::usart_t(UART_Type * regs) :
+		Regs(regs)
 {
 }
 
-Usart::~Usart()
+usart_t::~usart_t()
 {
 
 }
 
-void Usart::ParityModeSet(uint32_t ulParity)
+void usart_t::ParityModeSet(uint32_t ulParity)
 {
 	//
 	// Check the arguments.
@@ -95,7 +95,7 @@ void Usart::ParityModeSet(uint32_t ulParity)
 			| ulParity;
 }
 
-uint32_t Usart::ParityModeGet()
+uint32_t usart_t::ParityModeGet()
 {
 	//
 	// Return the current parity setting.
@@ -103,7 +103,7 @@ uint32_t Usart::ParityModeGet()
 	return (Regs->LCRH & (UART_LCRH_SPS | UART_LCRH_EPS | UART_LCRH_PEN));
 }
 
-void Usart::FIFOLevelSet(uint32_t ulTxLevel, uint32_t ulRxLevel)
+void usart_t::FIFOLevelSet(uint32_t ulTxLevel, uint32_t ulRxLevel)
 {
 	//
 	// Check the arguments.
@@ -120,7 +120,7 @@ void Usart::FIFOLevelSet(uint32_t ulTxLevel, uint32_t ulRxLevel)
 	Regs->IFLS = ulTxLevel | ulRxLevel;
 }
 
-void Usart::FIFOLevelGet(uint32_t * pulTxLevel, uint32_t * pulRxLevel)
+void usart_t::FIFOLevelGet(uint32_t * pulTxLevel, uint32_t * pulRxLevel)
 {
 	uint32_t ulTemp;
 
@@ -136,7 +136,7 @@ void Usart::FIFOLevelGet(uint32_t * pulTxLevel, uint32_t * pulRxLevel)
 	*pulRxLevel = ulTemp & UART_IFLS_RX_M;
 }
 
-void Usart::ConfigSetExpClk(uint32_t ulUARTClk, uint32_t ulBaud,
+void usart_t::ConfigSetExpClk(uint32_t ulUARTClk, uint32_t ulBaud,
 		uint32_t ulConfig)
 {
 	uint32_t ulDiv;
@@ -205,7 +205,7 @@ void Usart::ConfigSetExpClk(uint32_t ulUARTClk, uint32_t ulBaud,
 	Enable();
 }
 
-void Usart::ConfigGetExpClk(uint32_t ulUARTClk, uint32_t * pulBaud,
+void usart_t::ConfigGetExpClk(uint32_t ulUARTClk, uint32_t * pulBaud,
 		uint32_t * pulConfig)
 {
 	uint32_t ulInt, ulFrac;
@@ -237,7 +237,7 @@ void Usart::ConfigGetExpClk(uint32_t ulUARTClk, uint32_t * pulBaud,
 			UART_LCRH_EPS | UART_LCRH_PEN));
 }
 
-void Usart::Enable()
+void usart_t::Enable()
 {
 //
 // Enable the FIFO.
@@ -251,7 +251,7 @@ void Usart::Enable()
 	UART_CTL_RXE);
 }
 
-void Usart::Disable()
+void usart_t::Disable()
 {
 //
 // Wait for end of TX.
@@ -272,7 +272,7 @@ void Usart::Disable()
 	UART_CTL_RXE);
 }
 
-void Usart::FIFOEnable()
+void usart_t::FIFOEnable()
 {
 //
 // Enable the FIFO.
@@ -280,7 +280,7 @@ void Usart::FIFOEnable()
 	Regs->LCRH |= UART_LCRH_FEN;
 }
 
-void Usart::FIFODisable()
+void usart_t::FIFODisable()
 {
 //
 // Disable the FIFO.
@@ -288,7 +288,7 @@ void Usart::FIFODisable()
 	Regs->LCRH &= ~(UART_LCRH_FEN);
 }
 
-void Usart::EnableSIR(bool bLowPower)
+void usart_t::EnableSIR(bool bLowPower)
 {
 //
 // Enable SIR and SIRLP (if appropriate).
@@ -303,7 +303,7 @@ void Usart::EnableSIR(bool bLowPower)
 	}
 }
 
-void Usart::DisableSIR()
+void usart_t::DisableSIR()
 {
 //
 // Disable SIR and SIRLP (if appropriate).
@@ -311,7 +311,7 @@ void Usart::DisableSIR()
 	Regs->CTL &= ~(UART_CTL_SIREN | UART_CTL_SIRLP);
 }
 
-bool Usart::CharsAvail()
+bool usart_t::CharsAvail()
 {
 //
 // Return the availability of characters.
@@ -319,7 +319,7 @@ bool Usart::CharsAvail()
 	return ((Regs->FR & UART_FR_RXFE) ? false : true);
 }
 
-bool Usart::SpaceAvail()
+bool usart_t::SpaceAvail()
 {
 
 //
@@ -328,7 +328,7 @@ bool Usart::SpaceAvail()
 	return ((Regs->FR & UART_FR_TXFF) ? false : true);
 }
 
-long Usart::CharGetNonBlocking()
+long usart_t::CharGetNonBlocking()
 {
 //
 // See if there are any characters in the receive FIFO.
@@ -349,7 +349,7 @@ long Usart::CharGetNonBlocking()
 	}
 }
 
-long Usart::CharGet()
+long usart_t::CharGet()
 {
 
 //
@@ -365,7 +365,7 @@ long Usart::CharGet()
 	return (Regs->DR);
 }
 
-bool Usart::CharPutNonBlocking(uint8_t ucData)
+bool usart_t::CharPutNonBlocking(uint8_t ucData)
 {
 
 //
@@ -392,7 +392,7 @@ bool Usart::CharPutNonBlocking(uint8_t ucData)
 	}
 }
 
-void Usart::CharPut(uint8_t ucData)
+void usart_t::CharPut(uint8_t ucData)
 {
 
 //
@@ -408,7 +408,7 @@ void Usart::CharPut(uint8_t ucData)
 	Regs->DR = ucData;
 }
 
-void Usart::BreakCtl(bool bBreakState)
+void usart_t::BreakCtl(bool bBreakState)
 {
 
 //
@@ -420,7 +420,7 @@ void Usart::BreakCtl(bool bBreakState)
 					(Regs->LCRH & ~(UART_LCRH_BRK)));
 }
 
-bool Usart::Busy()
+bool usart_t::Busy()
 {
 
 //
@@ -429,7 +429,7 @@ bool Usart::Busy()
 	return ((Regs->FR & UART_FR_BUSY) ? true : false);
 }
 
-void Usart::IsrRegister(void (*pfnHandler)(void))
+void usart_t::IsrRegister(void (*pfnHandler)(void))
 {
 	uint32_t ulInt;
 
@@ -449,7 +449,7 @@ void Usart::IsrRegister(void (*pfnHandler)(void))
 	IntEnable(ulInt);
 }
 
-void Usart::IsrUnregister()
+void usart_t::IsrUnregister()
 {
 	uint32_t ulInt;
 
@@ -469,7 +469,7 @@ void Usart::IsrUnregister()
 	IntUnregister(ulInt);
 }
 
-void Usart::IntEnable(uint32_t ulIntFlags)
+void usart_t::IntEnable(uint32_t ulIntFlags)
 {
 //
 // Check the arguments.
@@ -481,7 +481,7 @@ void Usart::IntEnable(uint32_t ulIntFlags)
 	Regs->IM |= ulIntFlags;
 }
 
-void Usart::IntDisable(uint32_t ulIntFlags)
+void usart_t::IntDisable(uint32_t ulIntFlags)
 {
 
 //
@@ -494,7 +494,7 @@ void Usart::IntDisable(uint32_t ulIntFlags)
 	Regs->IM &= ~(ulIntFlags);
 }
 
-uint32_t Usart::IntStatus(bool bMasked)
+uint32_t usart_t::IntStatus(bool bMasked)
 {
 	//
 	// Check the arguments.
@@ -514,7 +514,7 @@ uint32_t Usart::IntStatus(bool bMasked)
 	}
 }
 
-void Usart::IntClear(uint32_t ulIntFlags)
+void usart_t::IntClear(uint32_t ulIntFlags)
 {
 	//
 	// Check the arguments.
@@ -526,7 +526,7 @@ void Usart::IntClear(uint32_t ulIntFlags)
 	Regs->ICR = ulIntFlags;
 }
 
-uint32_t Usart::RxErrorGet()
+uint32_t usart_t::RxErrorGet()
 {
 	//
 	// Check the arguments.
@@ -538,7 +538,7 @@ uint32_t Usart::RxErrorGet()
 	return (Regs->RSR & 0x0000000F);
 }
 
-void Usart::RxErrorClear()
+void usart_t::RxErrorClear()
 {
 //
 // Any write to the Error Clear Register clears all bits which are
@@ -547,7 +547,7 @@ void Usart::RxErrorClear()
 	Regs->RSR = 0;
 }
 
-void Usart::SmartCardEnable()
+void usart_t::SmartCardEnable()
 {
 	uint32_t ulVal;
 
@@ -573,7 +573,7 @@ void Usart::SmartCardEnable()
 	Regs->CTL |= UART_CTL_SMART;
 }
 
-void Usart::SmartCardDisable()
+void usart_t::SmartCardDisable()
 {
 	//
 	// Check the arguments.
@@ -586,7 +586,7 @@ void Usart::SmartCardDisable()
 	Regs->CTL &= ~UART_CTL_SMART;
 }
 
-void Usart::ModemControlSet(uint32_t ulControl)
+void usart_t::ModemControlSet(uint32_t ulControl)
 {
 	uint32_t ulTemp;
 
@@ -605,7 +605,7 @@ void Usart::ModemControlSet(uint32_t ulControl)
 	Regs->CTL = ulTemp;
 }
 
-void Usart::ModemControlClear(uint32_t ulControl)
+void usart_t::ModemControlClear(uint32_t ulControl)
 {
 	uint32_t ulTemp;
 
@@ -624,7 +624,7 @@ void Usart::ModemControlClear(uint32_t ulControl)
 	Regs->CTL = ulTemp;
 }
 
-uint32_t Usart::ModemControlGet()
+uint32_t usart_t::ModemControlGet()
 {
 //
 // Check the arguments.
@@ -635,7 +635,7 @@ uint32_t Usart::ModemControlGet()
 	return (Regs->CTL & (UART_OUTPUT_RTS | UART_OUTPUT_DTR));
 }
 
-uint32_t Usart::ModemStatusGet()
+uint32_t usart_t::ModemStatusGet()
 {
 	//
 	// Check the arguments.
@@ -647,7 +647,7 @@ uint32_t Usart::ModemStatusGet()
 	UART_INPUT_CTS | UART_INPUT_DSR));
 }
 
-void Usart::FlowControlSet(uint32_t ulMode)
+void usart_t::FlowControlSet(uint32_t ulMode)
 {
 	//
 	// Check the arguments.
@@ -663,7 +663,7 @@ void Usart::FlowControlSet(uint32_t ulMode)
 			| ulMode);
 }
 
-uint32_t Usart::FlowControlGet()
+uint32_t usart_t::FlowControlGet()
 {
 //
 // Check the arguments.
@@ -673,7 +673,7 @@ uint32_t Usart::FlowControlGet()
 	return (Regs->CTL & (UART_FLOWCONTROL_TX | UART_FLOWCONTROL_RX));
 }
 
-void Usart::TxIntModeSet(uint32_t ulMode)
+void usart_t::TxIntModeSet(uint32_t ulMode)
 {
 	//
 	// Check the arguments.
@@ -688,7 +688,7 @@ void Usart::TxIntModeSet(uint32_t ulMode)
 			| ulMode);
 }
 
-uint32_t Usart::TxIntModeGet()
+uint32_t usart_t::TxIntModeGet()
 {
 	//
 	// Return the current transmit interrupt mode.
