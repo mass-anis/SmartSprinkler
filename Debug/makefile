@@ -13,8 +13,10 @@ RM := rm -rf
 -include system/src/diag/subdir.mk
 -include system/src/cortexm/subdir.mk
 -include system/src/cmsis/subdir.mk
--include system/src/Drivers/subdir.mk
 -include src/subdir.mk
+-include FreeRTOS/Source/portable/MemMang/subdir.mk
+-include FreeRTOS/Source/portable/GCC/ARM_CM3/subdir.mk
+-include FreeRTOS/Source/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -62,7 +64,7 @@ all: SmartSprinkler.elf secondary-outputs
 SmartSprinkler.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wpadded -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -T "/home/anis/Documents/Projects/workspace/SmartSprinkler/ldscripts/mem.ld" -T "/home/anis/Documents/Projects/workspace/SmartSprinkler/ldscripts/sections.ld" -T "/home/anis/Documents/Projects/workspace/SmartSprinkler/ldscripts/libs.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"SmartSprinkler.map" --specs=nano.specs -o "SmartSprinkler.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wpadded -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"SmartSprinkler.map" --specs=nano.specs -o "SmartSprinkler.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

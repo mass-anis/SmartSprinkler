@@ -32,6 +32,8 @@ system/src/driverlib \
 system/src/diag \
 system/src/cortexm \
 system/src/cmsis \
-system/src/Drivers \
 src \
+FreeRTOS/Source \
+FreeRTOS/Source/portable/MemMang \
+FreeRTOS/Source/portable/GCC/ARM_CM3 \
 

@@ -229,7 +229,7 @@ typedef struct {                                    /*!< SSI0 Structure         
 
 typedef struct {                                    /*!< UART0 Structure                                                       */
   __IO uint32_t  DR;                                /*!< UART Data                                                             */
-  
+
   union {
     __IO uint32_t  UART_ALT_ECR;                    /*!< UART Receive Status/Error Clear                                       */
     __IO uint32_t  RSR;                             /*!< UART Receive Status/Error Clear                                       */
@@ -261,7 +261,7 @@ typedef struct {                                    /*!< UART0 Structure        
 
 typedef struct {                                    /*!< I2C0 Structure                                                        */
   __IO uint32_t  MSA;                               /*!< I2C Master Slave Address                                              */
-  
+
   union {
     __IO uint32_t  I2C0_ALT_MCS;                    /*!< I2C Master Control/Status                                             */
     __IO uint32_t  MCS;                             /*!< I2C Master Control/Status                                             */
@@ -275,7 +275,7 @@ typedef struct {                                    /*!< I2C0 Structure         
   __IO uint32_t  MCR;                               /*!< I2C Master Configuration                                              */
   __I  uint32_t  RESERVED0[503];
   __IO uint32_t  SOAR;                              /*!< I2C Slave Own Address                                                 */
-  
+
   union {
     __IO uint32_t  I2C0_ALT_SCSR;                   /*!< I2C Slave Control/Status                                              */
     __IO uint32_t  SCSR;                            /*!< I2C Slave Control/Status                                              */
@@ -496,7 +496,7 @@ typedef struct {                                    /*!< CAN0 Structure         
   __IO uint32_t  BRPE;                              /*!< CAN Baud Rate Prescaler Extension                                     */
   __I  uint32_t  RESERVED0;
   __IO uint32_t  IF1CRQ;                            /*!< CAN IF1 Command Request                                               */
-  
+
   union {
     __IO uint32_t  CAN0_ALT_IF1CMSK;                /*!< CAN IF1 Command Mask                                                  */
     __IO uint32_t  IF1CMSK;                         /*!< CAN IF1 Command Mask                                                  */
@@ -512,7 +512,7 @@ typedef struct {                                    /*!< CAN0 Structure         
   __IO uint32_t  IF1DB2;                            /*!< CAN IF1 Data B2                                                       */
   __I  uint32_t  RESERVED1[13];
   __IO uint32_t  IF2CRQ;                            /*!< CAN IF2 Command Request                                               */
-  
+
   union {
     __IO uint32_t  CAN0_ALT_IF2CMSK;                /*!< CAN IF2 Command Mask                                                  */
     __IO uint32_t  IF2CMSK;                         /*!< CAN IF2 Command Mask                                                  */
@@ -551,7 +551,7 @@ typedef struct {                                    /*!< CAN0 Structure         
   */
 
 typedef struct {                                    /*!< MAC Structure                                                         */
-  
+
   union {
     __IO uint32_t  MAC_ALT_IACK;                    /*!< Ethernet MAC Raw Interrupt Status/Acknowledge                         */
     __IO uint32_t  RIS;                             /*!< Ethernet MAC Raw Interrupt Status/Acknowledge                         */
@@ -559,7 +559,7 @@ typedef struct {                                    /*!< MAC Structure          
   __IO uint32_t  IM;                                /*!< Ethernet MAC Interrupt Mask                                           */
   __IO uint32_t  RCTL;                              /*!< Ethernet MAC Receive Control                                          */
   __IO uint32_t  TCTL;                              /*!< Ethernet MAC Transmit Control                                         */
-  
+
   union {
     __IO uint32_t  MAC_ALT_DATA;                    /*!< Ethernet MAC Data                                                     */
     __IO uint32_t  DATA;                            /*!< Ethernet MAC Data                                                     */

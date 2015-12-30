@@ -8,7 +8,6 @@
 /*
  * The '__stack' definition is required by crt0, do not remove it.
  */
- 
 __stack = ORIGIN(RAM) + LENGTH(RAM);
 
 _estack = __stack; 	/* STM specific definition */
@@ -54,10 +53,6 @@ ENTRY(_start)
 
 SECTIONS
 {
-	.vtable 0x20000000 :
-	{
-	    KEEP(*(.vtable)) /* keep my variable even if not referenced */
-	}>RAM
     /*
      * For Cortex-M devices, the beginning of the startup code is stored in
      * the .isr_vector section, which goes to FLASH. 
