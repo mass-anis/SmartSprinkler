@@ -27,6 +27,22 @@
 #include "../../src/delay.h"
 
 
+typedef enum{
+	OPEN = 0,
+	WEP = 1,
+	WPA_PSK ,
+	WPA2_PSK,
+	WPA_WPA2_PSK
+}AP_ECN;
+
+typedef struct{
+	AP_ECN encryption;
+	uint8_t rssi;
+	uint8_t mac[6];
+	char ssid[20];
+	uint8_t channel;
+}APScanResult;
+
 typedef enum {
 	StateReady,
 	StateSendingCmd,
@@ -48,7 +64,8 @@ private:
 	volatile ESPStates State;
 	uint32_t SDKVer;
 	uint32_t ATVer;
-	void SendATCommand(const char* com);
+	APScanResult AvailableAP[4];
+
 public:
 	const uint32_t &SDKVersion=SDKVer;
 	const uint32_t &ATVersion=ATVer;
@@ -56,16 +73,16 @@ public:
 	esp8266_t(const uint32_t usart_base);
 	~esp8266_t();
 	void init();
-
+	void SendATCommand(const char* com);
 	bool TestAT(void);
 	void EnableEcho();
 	void DisableEcho();
 	bool RestartModule(void);
 	bool Connect(const char* ssid, const char* pwd);
-	bool ListWifiNetworks();
+	//bool ListWifiNetworks();
 	bool Disconnect();
 	bool AutoConnect(bool Auto);
-	bool GetIPAddress();
+	//bool GetIPAddress();
 	bool SetWifiMode(WifiModes mode);
 	void UartISR();
 };

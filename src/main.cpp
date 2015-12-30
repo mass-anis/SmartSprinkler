@@ -41,7 +41,8 @@ int main(int argc, char* argv[])
 
 
 	wifi.init();
-	wifi.Connect("salon 2.4G","RTt567fgh");
+	//wifi.ListWifiNetworks();
+	//wifi.Connect("salon 2.4G","RTt567fgh");
 
 	int seconds = 0;
 	// Infinite loop
@@ -52,7 +53,8 @@ int main(int argc, char* argv[])
 		GPIOPinWrite(GPIOF_BASE, GPIO_PIN_0, seconds & 0x01);
 		//wifi.SendATCommand("AT\r\n");
 		DelayMs(2000);
-		wifi.GetIPAddress();
+		wifi.SendATCommand("AT+CWJAP?\r\n");
+		//wifi.GetIPAddress();
 		// Count seconds on the trace device.
 		trace_printf("\nSecond %d\n", seconds);
 
