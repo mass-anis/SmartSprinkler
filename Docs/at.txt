@@ -1,0 +1,13 @@
+AT\r\r\n\r\nOK\r\n
+AT+GMR\r\r\nAT version:0.21.0.0\r\nSDK version:0.9.5\r\n\r\nOK\r\n
+AT+CWLAP\r\r\n\r\nERROR\r\n"
+
++CWLAP:(4,"ORANGE_89D4",-91,"58:1f:28:95:89:dc",1)
+
++CWLAP:(4,"salon 2.4G",-58,"20:aa:4b:fc:f0:49",6)
+
++CWLAP:(0,"hamma-guest",-57,"22:aa:4b:fc:f0:4a",6)
+
+
+
+OK
