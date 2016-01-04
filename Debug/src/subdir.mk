@@ -4,15 +4,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/WifiTask.c \
 ../src/_write.c \
+../src/fifo.c \
 ../src/main.c 
 
 OBJS += \
+./src/WifiTask.o \
 ./src/_write.o \
+./src/fifo.o \
 ./src/main.o 
 
 C_DEPS += \
+./src/WifiTask.d \
 ./src/_write.d \
+./src/fifo.d \
 ./src/main.d 
 
 
